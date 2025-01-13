@@ -12,13 +12,6 @@
 			pkgs = import nixpkgs { inherit system; };
 			naersk' = pkgs.callPackage naersk {};
 		in {
-			devShell = pkgs.mkShell {
-				nativeBuildInputs = with pkgs; [
-					cxx-rs
-					clang
-				];
-			};
-
 			packages.default = let
 				rust = naersk'.buildPackage {
 					src = ./rust;
